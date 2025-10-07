@@ -73,8 +73,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        // Si usas pepper en el mutador, aquí compara con pepper (ya lo tienes).
-        // Si dejaste Hash::check directo: ajusta a tu flujo con pepper.
+        // Si usas pepper en el mutador, aquí compara con pepper
         if (
             !Hash::check(
                 hash_hmac(
