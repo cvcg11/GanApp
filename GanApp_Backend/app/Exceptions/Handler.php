@@ -18,7 +18,7 @@ class Handler extends ExceptionHandler
             ], 401);
         }
 
-        // En web, podrías redirigir a login si existe:
+        // Para web, en el momento de que exista un login:
         // return redirect()->guest(route('login'));
         return parent::unauthenticated($request, $exception);
     }
