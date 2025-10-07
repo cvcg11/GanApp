@@ -106,7 +106,7 @@ class AuthController extends Controller
             $user->save();
         }
 
-        // Revoca PATs viejos (opcional, recomendado)
+        // Revoca PATs viejos
         $user->tokens()->delete();
 
         // Emite access+refresh y setea cookies
@@ -122,7 +122,7 @@ class AuthController extends Controller
         $access->forget();
         $refresh->forget();
 
-        // invalidar refresh usado (si lo trae)
+        // invalidar refresh usado
         if ($rt = $request->cookie('refresh_token')) {
             \DB::table('refresh_tokens')
                 ->where('token_hash', hash('sha256', $rt))
